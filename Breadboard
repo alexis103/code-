@@ -8,7 +8,7 @@ unsigned long debounceDelay = 50;  
 
 void setup() {
   pinMode(buttonPin, INPUT);
-  pinMode(ledPin, OUTPUT);
+  pinMode(motorPin, OUTPUT);
   digitalWrite(motorPin, motorState);
 }
 void loop() {
@@ -24,7 +24,7 @@ void loop() {
      }
    }
  }
- analogWrite(motorPin,motorPin,motorState);
+ analogWrite(motorPin,motorState);
 buttonState = 0;
 if (buttonState < 255) 
     buttonState += 50;
