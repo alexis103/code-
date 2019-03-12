@@ -1,6 +1,6 @@
 const int buttonPin = 2;   
-const int motorPin = 13;     
-int motorState = HIGH;         
+const int motorPin = 3;     
+int motorState = 0;         
 int buttonState;             
 int lastButtonState = LOW;   
 unsigned long lastDebounceTime = 0;  
@@ -16,14 +16,16 @@ void loop() {
   if (reading != lastButtonState) {
     lastDebounceTime = millis();
   }
-buttonState = 180;
-if (buttonState < 240) 
-    buttonState +=15;
   if ((millis() - lastDebounceTime) > debounceDelay) {
-    if (reading != buttonState) {
-      buttonState = reading;
-      if (buttonState == HIGH) {
-        motorState = !motorState;
-      }
-    }
-  }
+   if (reading != buttonState) {
+     buttonState = reading;
+     if (buttonState == HIGH) {
+       motorState = !motorState;
+     }
+   }
+ }
+ analogWrite(motorPin,motorPin,motorState);
+buttonState = 0;
+if (buttonState < 255) 
+    buttonState += 50;
+}
